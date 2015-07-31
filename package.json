@@ -1,0 +1,31 @@
+{
+  "name": "peer-hub",
+  "version": "0.0.0",
+  "description": "Signalling for WebRTC multi peer communication",
+  "main": "./lib/index.js",
+  "bin": {
+    "binary_name": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nihey/node-peer-hub.git"
+  },
+  "keywords": [
+    "webrtc",
+    "wrtc",
+    "signalling",
+    "multi",
+    "peer"
+  ],
+  "author": "Nihey Takizawa <nihey.takizawa@gmail.com>",
+  "license": "CC0",
+  "bugs": {
+    "url": "https://github.com/nihey/node-peer-hub/issues"
+  },
+  "dependencies": {
+    "socket.io": "^1.3.6"
+  }
+}
