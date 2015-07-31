@@ -1,1 +1,1 @@
-# Simple Node Boilerplate
+# Peer Hub

@@ -1,10 +1,10 @@
 {
   "name": "peer-hub",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "description": "Signalling for WebRTC multi peer communication",
   "main": "./lib/index.js",
   "bin": {
-    "binary_name": "./bin/index.js"
+    "peer-hub": "./bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
