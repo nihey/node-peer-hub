@@ -3,10 +3,25 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var meow = require('meow');
+
+var cli = meow({
+  pkg: require('../package.json'),
+  help: [
+    'Usage:',
+    '  peer-hub [options]',
+    '',
+    'Options:',
+    '  -p <port number>, --port <port number>    change default served port number',
+    '',
+    'Examples:',
+    '  peer-hub',
+    '  peer-hub -p 2000',
+    '  peer-hub -p 8080',
+  ].join('\n'),
+});
 
 io.on('connection', function(socket){
-    console.log('a user connected');
-
     socket.on('join', function(room) {
       // Get the list of peers in the room
       var peers = Object.keys(io.nsps['/'].adapter.rooms['foobar'] || {});
@@ -23,12 +38,15 @@ io.on('connection', function(socket){
         signal: data.signal,
       });
     });
-
-    socket.on('disconnect', function() {
-      console.log('a user disconnected');
-    });
 });
 
-http.listen(3000, function(){
-    console.log('listening on *:3000');
-});
+if (!(cli.flags.h || cli.flags.help || cli.flags.version)) {
+  var port = cli.flags.p || cli.flags.port || 3000;
+  http.listen(port, function(){
+    console.log('listening on *:' + port);
+  });
+} else if (cli.flags.h || cli.flags.help) {
+  console.log(cli.help);
+} else if (cli.flags.version) {
+  console.log(cli.version);
+}
