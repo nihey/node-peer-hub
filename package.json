@@ -1,6 +1,6 @@
 {
   "name": "peer-hub",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Signalling for WebRTC multi peer communication",
   "main": "./lib/index.js",
   "bin": {
@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "express": "^4.13.1",
+    "meow": "^3.3.0",
     "socket.io": "^1.3.6"
   }
 }
