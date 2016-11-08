@@ -24,7 +24,9 @@ var cli = meow({
 io.on('connection', function(socket){
     socket.on('join', function(room) {
       // Get the list of peers in the room
-      var peers = Object.keys(io.nsps['/'].adapter.rooms['foobar'] || {});
+      var peers = io.nsps['/'].adapter.rooms[room] ?
+                Object.keys(io.nsps['/'].adapter.rooms[room].sockets) : []
+      
       // Send them to the client
       socket.emit('peers', peers);
       // And then add the client to the room
